@@ -31,35 +31,35 @@ class TestIntermediateValidation(unittest.TestCase):
     """Tests pour la validation intermédiaire du mot de passe."""
 
     def test_no_special_character(self):
-        self.assertFalse(intermediate_test("Password123"))
+        self.assertFalse(intermediate_test("Password123")) # No special character
 
     def test_valid_with_special(self):
-        self.assertTrue(intermediate_test("MySecureP@ssword123!"))
+        self.assertTrue(intermediate_test("MySecureP@ssword123!")) 
 
     def test_too_long(self):
-        self.assertFalse(intermediate_test("P@ssw0rd12345678901234567890"))
+        self.assertFalse(intermediate_test("P@ssw0rd12345678901234567890")) # Too long
 
     def test_max_length(self):
         self.assertTrue(intermediate_test("P@ssw0rd123456789012"))
 
     def test_contains_whitespace(self):
-        self.assertFalse(intermediate_test("P@ssw0rd   "))
+        self.assertFalse(intermediate_test("P@ssw0rd   ")) # Contains whitespace
 
     def test_three_identical_chars(self):
-        self.assertFalse(intermediate_test("P@ssw0rd!!!"))
+        self.assertFalse(intermediate_test("P@ssw0rd!!!")) # Contains three identical characters
 
 
 class TestAdvancedValidation(unittest.TestCase):
     """Tests pour la validation avancée du mot de passe."""
 
     def test_simple_password_rejected(self):
-        self.assertEqual(advanced_test("Password123"), "Too Simple")
+        self.assertEqual(advanced_test("Password123"), "Too Simple") # Simple password should be rejected
 
     def test_very_strong_password(self):
-        self.assertEqual(advanced_test("MySecureP@ssword123!"), "Very Strong")
+        self.assertEqual(advanced_test("MySecureP@ssword123!"), "Very Strong") 
 
     def test_weak_password(self):
-        self.assertEqual(advanced_test("passord"), "Weak")
+        self.assertEqual(advanced_test("passord"), "Weak") 
 
     def test_medium_password(self):
         self.assertEqual(advanced_test("pasw0rd"), "Medium")

@@ -66,11 +66,11 @@ def advanced_test(password):
     match sum(rules)/len(rules) * 100:
         case x if x < 20:
             return "Very Weak"
-        case x if x > 20 and x < 40:
+        case x if x >= 20 and x < 40:
             return "Weak"
-        case x if x > 40 and x < 60:
+        case x if x >= 40 and x < 60:
             return "Medium"
-        case x if x > 80 and x < 100:
+        case x if x >= 80 and x < 100:
             return "Strong"
         case 100:
             return "Very Strong"
